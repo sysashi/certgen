@@ -7,6 +7,87 @@ body {
     display: flex;
 }
 
+#index-wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background:transparent url(/static/images/ignasi_pattern_s.png) top left;
+}
+
 #intro {
     align-self: center;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+}
+
+#editor {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+
+    & #cert {
+        flex: 1;
+    }
+    & #dashboard {
+        flex: 0 0 300px;
+    }
+}
+
+#editor
+#cert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & #cert-img-wrapper {
+        position: relative;
+        & > canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+}
+
+#editor
+#dashboard {
+    border-left: 1px solid #DDD;
+    background: #EEE;
+    color: #444;
+    overflow-y: auto;
+}
+
+#editor
+#dashboard
+#fields {
+    & > li {
+        margin-bottom: 20px;
+        & label {
+            display: block;
+            font-weight: bold;
+        }
+
+        & input {
+            padding: 4px 8px;
+            border-radius: 3px;
+            border: 1px solid #888;
+        }
+
+        & div {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+#editor
+#dashboard
+#actions {
+    text-align: center;
+}
+
+
+#editor
+#dashboard
+#info {
+    text-align: center;
 }

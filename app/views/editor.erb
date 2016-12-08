@@ -1,0 +1,27 @@
+<div id="editor">
+    <div id="cert">
+        <div id="cert-img-wrapper">
+          <%= cert_img(@cert) %>
+        </div>
+    </div>
+    <div id="dashboard" class="ph3">
+        <div id="info">
+        <h2> Preview/edit mode </h2>
+        </div>
+        <ol id="fields" class="">
+            <% @cert.fields.each do |field| %>
+                <li><%= erb :field_options,
+                    :layout => false,
+                    :locals => { :field => field } %></li>
+            <% end %>
+        </ol>
+        <div id="actions">
+          <a href="#"
+            id="add-field"
+            class="f8 link dim ph3 pv2 mb2 dib white bg-gray"> Add a field </a>
+          <a href="generate"
+            id="generate"
+            class="f8 link dim ph3 pv2 mb2 dib white bg-blue">Generate</a>
+        </div>
+    </div>
+</div>

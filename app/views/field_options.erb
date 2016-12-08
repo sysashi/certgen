@@ -1,0 +1,24 @@
+<% field = default_field() unless field %>
+<form action="field" method="POST" data-id="<%= field.pk %>">
+    <div>
+        <label> Field name </label>
+        <input type="text" name="name" value="<%= field.name %>" />
+    </div>
+    <div>
+        <label> Font color </label>
+        <input type="text" name="fontcolor" value="<%= field.fontcolor %>" />
+    </div>
+    <div>
+        <label> Font size </label>
+        <input name="fontsize"
+               value="<%= field.fontsize || 64 %>"
+               type="number" min="12" max="256" />
+    </div>
+    <div>
+        <label> Field content </label>
+        <input type="text" name="content" />
+    </div>
+    <input type="hidden" name="x" value="<%= field.x %>" />
+    <input type="hidden" name="y" value="<%= field.y %>" />
+    <a href="#" class="delete" onclick="return false;"> Delete </a>
+</form>
