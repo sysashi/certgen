@@ -58,6 +58,7 @@ class App < Sinatra::Base
     if upload_result.has_key? :error
       upload_result.to_json
     else
+      puts upload_result
       filepath, filename = upload_result[:ok]
       id = Actions::Cert.new(filepath, filename)
       redirect to("/cert/#{id}/edit")
