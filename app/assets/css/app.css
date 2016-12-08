@@ -11,7 +11,7 @@ body {
     display: flex;
     height: 100%;
     width: 100%;
-    background:transparent url(/static/images/ignasi_pattern_s.png) top left;
+    background:transparent url(/certgen/static/images/ignasi_pattern_s.png) top left;
 }
 
 #intro {
