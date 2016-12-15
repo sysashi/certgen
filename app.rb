@@ -4,6 +4,7 @@ require_relative "app/upload"
 require_relative "app/actions"
 require_relative "app/models"
 
+require "uri"
 require "pp"
 
 
@@ -87,7 +88,9 @@ class App < Sinatra::Base
       )
     end
     def base_url(user_path = "")
-      "#{request.env['PATH']}/#{user_path}"
+      proto = request.env["HTTP_X_FORWARDED_PROTO"] || request.env["rack.url_scheme"]
+      host = "#{proto}://#{request.env['HTTP_HOST']}"
+      URI::join(host, user_path)
     end
   end
 end
