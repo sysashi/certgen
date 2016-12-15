@@ -4,6 +4,8 @@ require_relative "app/upload"
 require_relative "app/actions"
 require_relative "app/models"
 
+require "pp"
+
 
 class App < Sinatra::Base
   SAVE_PATH = settings.root + "/public/uploads"
@@ -12,6 +14,7 @@ class App < Sinatra::Base
   set :server, "thin"
 
   get "/"  do
+    pp request.env
     erb :index
   end
 
