@@ -68,13 +68,6 @@ class App < Sinatra::Base
 
 
   helpers do
-    def cert_img(cert)
-      "<img id='cert-img'\
-        src='/uploads/#{cert.filename}' \
-        data-width = '#{cert.width}' \
-        data-height = '#{cert.height}' \
-        alt='#{cert.name}' />"
-    end
     def default_field
       Models::Field.new(
         :name => "Default",
@@ -88,6 +81,14 @@ class App < Sinatra::Base
       proto = request.env["HTTP_X_FORWARDED_PROTO"] || request.env["rack.url_scheme"]
       host = "#{proto}://#{request.env['HTTP_HOST']}"
       URI::join(host, user_path)
+    end
+    def cert_img(cert)
+      url = base_url("/uploads/#{cert.filename}")
+      "<img id='cert-img'\
+        src='#{url}' \
+        data-width = '#{cert.width}' \
+        data-height = '#{cert.height}' \
+        alt='#{cert.name}' />"
     end
   end
 end
