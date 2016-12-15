@@ -83,7 +83,7 @@ class App < Sinatra::Base
       URI::join(host, user_path)
     end
     def cert_img(cert)
-      url = base_url("/uploads/#{cert.filename}")
+      url = base_url("uploads/#{cert.filename}")
       "<img id='cert-img'\
         src='#{url}' \
         data-width = '#{cert.width}' \
