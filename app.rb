@@ -1,11 +1,9 @@
 require "sinatra/base"
 require "prawn"
+require "uri"
 require_relative "app/upload"
 require_relative "app/actions"
 require_relative "app/models"
-
-require "uri"
-require "pp"
 
 
 class App < Sinatra::Base
@@ -15,7 +13,6 @@ class App < Sinatra::Base
   set :server, "thin"
 
   get "/"  do
-    pp request.env
     erb :index
   end
 
@@ -36,7 +33,6 @@ class App < Sinatra::Base
   end
 
   post "/cert/:id/field" do
-    puts params
     content_type :json
     cert = Models::Cert[params[:id]]
     field = cert.add_field(Models::Field.new(params))
@@ -59,10 +55,11 @@ class App < Sinatra::Base
   post "/cert/upload" do
     content_type :json
     upload_result = Upload.handle_request(params, SAVE_PATH)
+    puts "Upload results"
+    puts upload_result
     if upload_result.has_key? :error
       upload_result.to_json
     else
-      puts upload_result
       filepath, filename = upload_result[:ok]
       id = Actions::Cert.new(filepath, filename)
       redirect to("/cert/#{id}/edit")
