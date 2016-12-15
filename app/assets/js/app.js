@@ -3,8 +3,7 @@ const byId = (id) => document.getElementById(id)
 var RATIO = 1
 
 const EDITOR = {
-    init() {
-        let certimg = byId("cert-img")
+    init(certimg) {
         let real_width = certimg.dataset.width
         if (certimg.width != real_width) {
             RATIO = real_width / certimg.width
@@ -21,7 +20,10 @@ const EDITOR = {
 (function() {
     let editor = byId("editor");
     if (editor) {
-        EDITOR.init()
+        let certimg = byId("cert-img")
+        certimg.addEventListener("load", () => {
+            EDITOR.init(certimg)
+        }, false)
     }
 })();
 
