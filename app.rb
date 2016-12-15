@@ -83,8 +83,8 @@ class App < Sinatra::Base
         :y => 0
       )
     end
-    def base_url(path = "")
-      "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}/#{path}"
+    def base_url(user_path = "")
+      "#{request.env['PATH']}/#{user_path}"
     end
   end
 end
