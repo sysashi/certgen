@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Sinatra App</title>
-    <link rel="stylesheet" href="/certgen/static/css/app.css">
+    <link rel="stylesheet" href="<%= base_url('static/css/app.css') %>">
 </head>
 <body>
    <%= yield %>
-   <script src="/certgen/static/js/app.js"></script>
+   <script src="<%= base_url('static/js/app.js') %>"></script>
 </body>
 </html>
